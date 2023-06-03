@@ -1,3 +1,9 @@
+/*this code represents a flashlight object in a Unity game, where the flashlight can be turned on/off, have different power states,
+drain the battery over time, and perform a flickering effect when the battery is low.*/
+
+
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -37,16 +43,16 @@ public class Flashlight : MonoBehaviour
         FlashlightFlashing = 3
     }
 
-    void Start() {
-         _flashlightAudio = GetComponent<AudioSource>();
+  void Start() {
+    _flashlightAudio = GetComponent<AudioSource>(); // Get the AudioSource component attached to the same GameObject
          
-        _flashlight = GetComponentInChildren<Light> ();
-        _flashlight.enabled = false;
+    _flashlight = GetComponentInChildren<Light> (); // Get the Light component attached to a child GameObject
+    _flashlight.enabled = false; // Disable the flashlight initially
 
-        StartCoroutine("FlashlightManager");
-        _flashlightState = Flashlight.FlashlightState.FlashlightOff;
-        _currentBatteryPower = _maximumBatteryPower;
-    }
+    StartCoroutine("FlashlightManager"); // Start the FlashlightManager coroutine
+    _flashlightState = Flashlight.FlashlightState.FlashlightOff; // Set the initial flashlight state to off
+    _currentBatteryPower = _maximumBatteryPower; // Set the initial battery power to the maximum value
+}
 
     void Update() {
 
